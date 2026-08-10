@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: #FAF8F3;
+  color: #1A1815;
+  overflow-x: clip;
+}
+
+body {
+  background: #FAF8F3;
+  color: #1A1815;
+  overflow-x: clip;
+  font-feature-settings: "ss01", "cv11";
+}
+
+::selection {
+  background: #5487AF;
+  color: #FDFCF9;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(84, 135, 175, 0.25);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover { background: rgba(84, 135, 175, 0.5); }
+
+/* Typography */
+.text-display {
+  font-family: var(--font-display), "Georgia", serif;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.eyebrow {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #57524B;
+}
+
+/* Hairlines */
+.hairline {
+  height: 1px;
+  background: rgba(26, 24, 21, 0.10);
+}
+
+/* Accent underline for links (medical clean detail) */
+.link-underline {
+  position: relative;
+  display: inline;
+  color: #3E6E96;
+}
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.35;
+  transition: opacity 0.2s;
+}
+.link-underline:hover::after { opacity: 1; }
+
+/* Subtle fade-in on scroll */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up {
+  opacity: 0;
+  animation: fade-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Refined focus ring */
+*:focus-visible {
+  outline: 1.5px solid #5487AF;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Text balance helpers */
+.balance { text-wrap: balance; }
+.pretty { text-wrap: pretty; }
+
+/* Underline effect for nav */
+.nav-link {
+  position: relative;
+  padding-bottom: 2px;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.nav-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
